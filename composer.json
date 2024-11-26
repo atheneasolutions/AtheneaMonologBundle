@@ -1,0 +1,38 @@
+{
+    "name": "athenea/monolog-bundle",
+    "type": "symfony-bundle",
+    "description": "Bundle to use monolog",
+    "autoload": {
+        "psr-4": {
+            "Athenea\\MonologBundle\\": "src/"
+        },
+        "autoload-dev": {
+            "psr-4": {
+                "Athenea\\MonologBundle\\": "tests/"
+            }
+        }
+    },
+    "authors": [
+        {
+            "name": "Lluc Bové",
+            "email": "lluc.bove@atheneasolutions.com"
+        }
+    ],
+    "require": {
+        "doctrine/mongodb-odm-bundle": "^5.1",
+        "php": ">=8.0",
+        "symfony/config": "^7.0",
+        "symfony/dependency-injection": "^7.0",
+        "symfony/http-kernel": "^7.0",
+        "symfony/yaml": "^7.0",
+        "symfony/monolog-bundle": "^3.10",
+        "symfony/mailer": "^7.0"
+
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:atheneasolutions/Symfony-Mongo-Bundle.git"
+        }
+    ]
+}

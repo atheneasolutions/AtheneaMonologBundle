@@ -1,0 +1,36 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        
+    Athenea\MonologBundle\Email\ErrorMailPrototype:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    Athenea\MonologBundle\LogHandler\MongoDeprecationLogHandler:
+        arguments:
+            $collectionName: '%athenea.monolog.mongo_deprecation_log_collection%'
+        tags: ['monolog.handler']
+
+    Athenea\MonologBundle\LogHandler\MongoLogHandler:
+        arguments:
+                $collectionName: '%athenea.monolog.mongo_log_collection%'
+        tags: ['monolog.handler']
+    
+    Athenea\MonologBundle\LogHandler\MailHandler:
+        arguments:
+            $env: '%kernel.environment%'
+            $emailRecipients: '%athenea.monolog.email_recipients%'
+            $emailFrom: '%athenea.monolog.email_from%'
+            $appName: '%athenea.monolog.app_name%'
+        tags: ['monolog.handler']
+
+
+    athenea.monolog.activation_strategy.param_based_activation:
+        class: Athenea\MonologBundle\Monolog\ActivationStrategy\ParamBasedActivation
+        public: true
+        arguments:
+            $enabled: false
+    Athenea\MonologBundle\Monolog\ActivationStrategy\ParamBasedActivation:
+        alias: athenea.monolog.activation_strategy.param_based_activation
